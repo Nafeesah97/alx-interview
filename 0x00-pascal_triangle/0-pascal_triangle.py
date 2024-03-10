@@ -8,7 +8,7 @@ Author: Nafeesah
 
 def pascal_triangle(n):
     """creates pascal triangle"""
-    resList= []
+    resList = []
     if n <= 0:
         return resList
     for i in range(n):

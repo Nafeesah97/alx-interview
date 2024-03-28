@@ -11,6 +11,7 @@ try:
     # Read Input Loop
     for line in sys.stdin:
         line = line.strip()
+        print(line)
         # Parse the line
         parts = line.split()
         if len(parts) != 7:

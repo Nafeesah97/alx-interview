@@ -11,9 +11,9 @@ try:
     # Read Input Loop
     for line in sys.stdin:
         line = line.strip()
-        print(line)
         # Parse the line
         parts = line.split()
+        print(parts)
         if len(parts) != 7:
             continue  # Skip invalid lines
         ip_address, _, _, _, status_code, file_size = parts

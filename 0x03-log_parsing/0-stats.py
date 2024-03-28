@@ -13,10 +13,9 @@ try:
         line = line.strip()
         # Parse the line
         parts = line.split()
-        print(parts)
-        if len(parts) != 7:
+        if len(parts) != 9:
             continue  # Skip invalid lines
-        ip_address, _, _, _, status_code, file_size = parts
+        ip_address, _, _, _, _, _, _, status_code, file_size = parts
         status_code = int(status_code)
         file_size = int(file_size)
 

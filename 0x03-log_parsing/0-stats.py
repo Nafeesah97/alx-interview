@@ -37,9 +37,10 @@ try:
                     if count > 0:
                         print(f"{code}: {count}")
 
-except (KeyboardInterrupt, EOFError):
+except (KeyboardInterrupt, EOFError) as e:
     # Print final statistics if interrupted
     print("File size:", total_file_size)
     for code, count in sorted(status_code_count.items()):
         if count > 0:
             print(f"{code}: {count}")
+            print(e)

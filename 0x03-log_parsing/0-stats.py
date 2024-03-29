@@ -43,4 +43,4 @@ except (KeyboardInterrupt, EOFError) as e:
     for code, count in sorted(status_code_count.items()):
         if count > 0:
             print(f"{code}: {count}")
-        print(e)
+    print(e)

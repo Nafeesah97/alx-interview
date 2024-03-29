@@ -29,15 +29,14 @@ try:
         # Check for Print Trigger
         if line_count % 10 == 0:
             # Print Statistics
-            print("Total file size:", total_file_size)
+            print("File size:", total_file_size)
             for code, count in sorted(status_code_count.items()):
                 if count > 0:
                     print(f"{code}: {count}")
-            print()
 
 except (KeyboardInterrupt, EOFError):
     # Print final statistics if interrupted
-    print("Total file size:", total_file_size)
+    print("File size:", total_file_size)
     for code, count in sorted(status_code_count.items()):
         if count > 0:
             print(f"{code}: {count}")

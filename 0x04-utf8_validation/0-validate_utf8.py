@@ -10,6 +10,7 @@ def validUTF8(data):
     num_bytes_to_follow = 0
 
     for byte in data:
+        byte = byte & 0b11111111
         if num_bytes_to_follow == 0:
             if byte >> 3 == 0b11110:  # 4 bytes
                 num_bytes_to_follow = 3

@@ -42,7 +42,9 @@ async function main() {
             const char_result = await characters(chars);
             final_chars.push(char_result.name)
         }
-        console.log(final_chars);
+        for (const name of final_chars) {
+            console.log(name);
+        }
     } catch (error) {
         console.error('Error:', error);
     }

@@ -18,10 +18,31 @@ async function nameloader(movie_id) {
     });
 }
 
+async function characters(characters_url) {
+    return new Promise((resolve, reject) => {
+        request(`${characters_url}`, (error, response, body) => {
+            if (error) {
+                reject(error);
+            }
+            if (response.statusCode !== 200) {
+                reject(`Request failed with status code ${response.statusCode}`);
+            }
+
+            resolve(JSON.parse(body));
+        });
+    });
+}
+
 async function main() {
+    let final_chars = [];
     try {
         const result = await nameloader(movie_id);
-        console.log(result.characters);
+        const characters_urls = result.characters;
+        for (let chars in characters_urls) {
+            const char_result = await characters(chars);
+            final_chars.push(char_result.name)
+        };
+    console.log(final_chars);
     } catch (error) {
         console.error('Error:', error);
     }

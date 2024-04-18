@@ -38,11 +38,11 @@ async function main() {
     try {
         const result = await nameloader(movie_id);
         const characters_urls = result.characters;
-        for (let chars in characters_urls) {
+        for (const chars of characters_urls) {
             const char_result = await characters(chars);
             final_chars.push(char_result.name)
-        };
-    console.log(final_chars);
+        }
+        console.log(final_chars);
     } catch (error) {
         console.error('Error:', error);
     }

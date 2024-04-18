@@ -13,7 +13,7 @@ async function nameloader(movie_id) {
                 reject(`Request failed with status code ${response.statusCode}`);
             }
 
-            resolve(body);
+            resolve(JSON.parse(body));
         });
     });
 }
@@ -21,7 +21,7 @@ async function nameloader(movie_id) {
 async function main() {
     try {
         const result = await nameloader(movie_id);
-        console.log(result);
+        console.log(result.characters);
     } catch (error) {
         console.error('Error:', error);
     }

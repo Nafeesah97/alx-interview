@@ -1,11 +1,11 @@
 #!/usr/bin/node
 
 const request = require('request');
-const movie_id = process.argv[2];
+const movieId = process.argv[2];
 
-async function nameloader(movie_id) {
+async function nameloader(movieId) {
     return new Promise((resolve, reject) => {
-        request(`https://swapi-api.alx-tools.com/api/films/${movie_id}`, (error, response, body) => {
+        request(`https://swapi-api.alx-tools.com/api/films/${movieId}`, (error, response, body) => {
             if (error) {
                 reject(error);
             }
@@ -18,9 +18,9 @@ async function nameloader(movie_id) {
     });
 }
 
-async function characters(characters_url) {
+async function characters(charactersUrl) {
     return new Promise((resolve, reject) => {
-        request(`${characters_url}`, (error, response, body) => {
+        request(`${charactersUrl}`, (error, response, body) => {
             if (error) {
                 reject(error);
             }
@@ -34,15 +34,15 @@ async function characters(characters_url) {
 }
 
 async function main() {
-    let final_chars = [];
+    let finalChars = [];
     try {
-        const result = await nameloader(movie_id);
-        const characters_urls = result.characters;
-        for (const chars of characters_urls) {
-            const char_result = await characters(chars);
-            final_chars.push(char_result.name)
+        const result = await nameloader(movieId);
+        const charactersUrls = result.characters;
+        for (const chars of charactersUrls) {
+            const charResult = await characters(chars);
+            final_chars.push(charResult.name)
         }
-        for (const name of final_chars) {
+        for (const name of finalChars) {
             console.log(name);
         }
     } catch (error) {

@@ -11,8 +11,10 @@ def changedynamic(coins, total, n, dp):
     if (dp[n][total] != -1):
         return dp[n][total]
     
-    dp[n][total] = (changedynamic(coins, total - (coins[n - 1]), n, dp)
-                    + changedynamic(coins, total, n -1, dp))
+    if (total in coins):
+        return -1
+    dp[n][total] = min(changedynamic(coins, total - (coins[n - 1]), n, dp),
+                       changedynamic(coins, total, n -1, dp))
     return dp[n][total]
 
 def makeChange(coins, total):

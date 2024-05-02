@@ -18,4 +18,5 @@ def makeChange(coins, total):
     a given amount total
     """
     dp = [float('inf')] * (total + 1)
-    return changedynamic(coins, total, dp)
+    sorted_coins = sorted(coins, reverse=True)
+    return changedynamic(sorted_coins, total, dp)

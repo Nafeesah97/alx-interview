@@ -6,7 +6,7 @@ def changedynamic(coins, total, dp):
     """To dynmically find the lowest combination"""
     dp[0] = 0
     if (total <= 0):
-        return dp[0]
+        return 0
 
     for coin in coins:
         for i in range(coin, total + 1):

@@ -3,21 +3,14 @@
 
 def changedynamic(coins, total, n, dp):
     """To dynmically find the lowest combination"""
+    dp[0] = 0
     if (total <= 0):
-        return 0
+        return dp[0]
     
-    if n == 0:
-        return float('inf')
-
-    if (dp[n][total] != -1):
-        return dp[n][total]
-    
-    if total < coins[n - 1]:
-        dp[n][total] = changedynamic(coins, total, n - 1, dp)
-    else:
-        dp[n][total] = min(1 + changedynamic(coins, total - (coins[n - 1]), n, dp),
-                       changedynamic(coins, total, n -1, dp))
-    return dp[n][total]
+    for coin in coins:
+        for i in range(coin, total + 1):
+            dp[i] = min(dp[i], 1 + dp[i - coin])
+    return dp[total] if dp[total] != -12 else -1
 
 def makeChange(coins, total):
     """
@@ -25,9 +18,5 @@ def makeChange(coins, total):
     a given amount total
     """
     n = len(coins)
-    dp = [[-1 for i in range(total + 1)] for j in range(n + 1)]
-    res = changedynamic(coins, total, n, dp)
-    if res == 'inf':
-        return -1
-    else:
-        return res
+    dp = [-12 for i in range(total + 1)]
+    return changedynamic(coins, total, n, dp)

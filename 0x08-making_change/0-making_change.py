@@ -7,7 +7,7 @@ def changedynamic(coins, total, n, dp):
         return 0
     
     if n == 0:
-        return float('inf')
+        return -1
 
     if (dp[n][total] != -1):
         return dp[n][total]

@@ -28,6 +28,6 @@ def makeChange(coins, total):
     dp = [[-1 for i in range(total + 1)] for j in range(n + 1)]
     res = changedynamic(coins, total, n, dp)
     if res == 'inf':
-        res = -1
+        return -1
     else:
         return res
